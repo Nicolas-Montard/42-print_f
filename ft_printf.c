@@ -6,7 +6,7 @@
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 13:15:16 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/20 16:41:21 by nmontard         ###   ########.fr       */
+/*   Updated: 2025/11/20 16:57:01 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 int	print_param_type(char c, va_list va_ptr)
 {
+	// verifier pour long ou unsigned int
 	if (c == 'c')
 		ft_putchar((char)va_arg(va_ptr, int));
 	else if (c == 's')

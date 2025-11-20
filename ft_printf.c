@@ -6,7 +6,7 @@
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 13:15:16 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/20 16:57:01 by nmontard         ###   ########.fr       */
+/*   Updated: 2025/11/20 17:00:47 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 int	print_param_type(char c, va_list va_ptr)
 {
-	// verifier pour long ou unsigned int
 	if (c == 'c')
 		ft_putchar((char)va_arg(va_ptr, int));
 	else if (c == 's')
@@ -34,9 +33,9 @@ int	print_param_type(char c, va_list va_ptr)
 	else if (c == 'u')
 		ft_putunbr(va_arg(va_ptr, unsigned int));
 	else if (c == 'x')
-		ft_put_hex_nbr(va_arg(va_ptr, long), 1);
+		ft_put_hex_nbr(va_arg(va_ptr, unsigned int), 1);
 	else if (c == 'X')
-		ft_put_hex_nbr(va_arg(va_ptr, long), 0);
+		ft_put_hex_nbr(va_arg(va_ptr, unsigned int), 0);
 	else if (c == '%')
 		ft_putchar('%');
 	else
@@ -85,9 +84,9 @@ int	main(void)
 	str = 0;
 	ptr = 0;
 	printf("printf : dsds   %p %i %s %d %u %x %X %%\n", ptr, 4, str, 2147483647,
-		us_int, long_var, long_var);
+		us_int, us_int, us_int);
 	ft_printf("ft_printf : dsds   %p %i %s %d %u %x %X %%\n", ptr, 4, str,
-		2147483647, us_int, long_var, long_var);
+		2147483647, us_int, us_int, us_int);
 	// printf("%d\n", printf(str, ptr, 4, str, 2147483647, us_int, long_var,
 	// 		long_var));
 	// printf("%d\n", ft_printf(str, ptr, 4, str, 2147483647, us_int, long_var,

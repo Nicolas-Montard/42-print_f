@@ -6,7 +6,7 @@
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 13:24:58 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/20 16:00:18 by nmontard         ###   ########.fr       */
+/*   Updated: 2025/11/20 16:58:56 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void static	ft_setbase(char base[], int is_lc)
 	}
 }
 
-void	ft_put_hex_nbr(long n, int is_lc)
+void	ft_put_hex_nbr(unsigned int n, int is_lc)
 {
 	char			base[16];
 	unsigned int	nb;

@@ -6,7 +6,7 @@
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:35:56 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/21 16:13:11 by nmontard         ###   ########.fr       */
+/*   Updated: 2025/11/21 16:21:48 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	ft_calculate(unsigned long nb, char base[], int *char_print)
 
 void	ft_put_memory(const void *addr, int *char_print)
 {
-	char base[16];
+	char	base[16];
 
 	ft_setbase(base);
 	if (!addr)

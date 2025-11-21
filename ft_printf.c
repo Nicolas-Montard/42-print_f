@@ -6,7 +6,7 @@
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 13:15:16 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/21 15:05:07 by nmontard         ###   ########.fr       */
+/*   Updated: 2025/11/21 16:19:47 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,11 @@ int	main(void)
 	printf_return = 0;
 	str = 0;
 	ptr = 0;
-	// printf_return = printf("issprintf : dsds %p %i %s %d %u %x %X %%\n", ptr, 4, "test",
+	// printf_return = printf("issprintf : 
+	// dsds %p %i %s %d %u %x %X %%\n", ptr, 4, "test",
 	// 	2147483647, us_int, us_int, us_int);
-	// ft_printf_return = ft_printf("ft_printf : dsds %p %i %s %d %u %x %X %%\n", ptr, 4, "test",
+	// ft_printf_return = ft_printf("ft_printf : 
+	// dsds %p %i %s %d %u %x %X %%\n", ptr, 4, "test",
 	// 	2147483647, us_int, us_int, us_int);
 	printf_return = printf("%p", 16);
 	ft_printf_return = ft_printf("%p", 16);

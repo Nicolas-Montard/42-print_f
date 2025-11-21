@@ -6,7 +6,7 @@
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:59:08 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/21 13:47:25 by nmontard         ###   ########.fr       */
+/*   Updated: 2025/11/21 16:21:26 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putnbr(int n, int *char_print)
 {
-	unsigned int nb;
+	unsigned int	nb;
 
 	if (n < 0)
 	{

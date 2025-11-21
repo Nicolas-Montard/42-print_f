@@ -6,40 +6,38 @@
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 13:15:16 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/20 17:00:47 by nmontard         ###   ########.fr       */
+/*   Updated: 2025/11/21 15:05:07 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_put_hex_nbr.h"
-#include "ft_put_memory.h"
-#include "ft_putchar.h"
-#include "ft_putnbr.h"
-#include "ft_putstr.h"
-#include "ft_putunbr.h"
+#include "ft_printf.h"
 #include <stdarg.h>
 
-int	print_param_type(char c, va_list va_ptr)
+int	print_param_type(char c, va_list va_ptr, int *char_print)
 {
 	if (c == 'c')
-		ft_putchar((char)va_arg(va_ptr, int));
+		ft_putchar((char)va_arg(va_ptr, int), char_print);
 	else if (c == 's')
-		ft_putstr(va_arg(va_ptr, char *));
+		ft_putstr(va_arg(va_ptr, char *), char_print);
 	else if (c == 'p')
-		ft_put_memory(va_arg(va_ptr, void *));
+		ft_put_memory(va_arg(va_ptr, void *), char_print);
 	else if (c == 'd')
-		ft_putnbr(va_arg(va_ptr, int));
+		ft_putnbr(va_arg(va_ptr, int), char_print);
 	else if (c == 'i')
-		ft_putnbr(va_arg(va_ptr, int));
+		ft_putnbr(va_arg(va_ptr, int), char_print);
 	else if (c == 'u')
-		ft_putunbr(va_arg(va_ptr, unsigned int));
+		ft_putunbr(va_arg(va_ptr, unsigned int), char_print);
 	else if (c == 'x')
-		ft_put_hex_nbr(va_arg(va_ptr, unsigned int), 1);
+		ft_put_hex_nbr(va_arg(va_ptr, unsigned int), 1, char_print);
 	else if (c == 'X')
-		ft_put_hex_nbr(va_arg(va_ptr, unsigned int), 0);
+		ft_put_hex_nbr(va_arg(va_ptr, unsigned int), 0, char_print);
 	else if (c == '%')
-		ft_putchar('%');
+		ft_putchar('%', char_print);
 	else
+	{
+		ft_putchar('%', char_print);
 		return (0);
+	}
 	return (1);
 }
 
@@ -47,7 +45,9 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	va_ptr;
 	int		i;
+	int		char_print;
 
+	char_print = 0;
 	i = -1;
 	if (!str)
 		return (-1);
@@ -56,22 +56,16 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			if (!print_param_type(str[i + 1], va_ptr))
-			{
-				ft_putchar(str[i]);
+			if (print_param_type(str[i + 1], va_ptr, &char_print))
 				i++;
-				if (str[i] == '\0')
-					break ;
-			}
-			else
-				i += 2;
 		}
-		ft_putchar(str[i]);
+		else
+			ft_putchar(str[i], &char_print);
 	}
 	va_end(va_ptr);
-	return (1);
+	return (char_print);
 }
-
+/*
 #include <stdio.h>
 
 int	main(void)
@@ -80,15 +74,19 @@ int	main(void)
 	char *ptr = &var;
 	char *str = "str";
 	unsigned int us_int = 4294967295;
-	long long_var = 9223372036854775804;
+	int printf_return;
+	int ft_printf_return;
+	ft_printf_return = 0;
+	printf_return = 0;
 	str = 0;
 	ptr = 0;
-	printf("printf : dsds   %p %i %s %d %u %x %X %%\n", ptr, 4, str, 2147483647,
-		us_int, us_int, us_int);
-	ft_printf("ft_printf : dsds   %p %i %s %d %u %x %X %%\n", ptr, 4, str,
-		2147483647, us_int, us_int, us_int);
-	// printf("%d\n", printf(str, ptr, 4, str, 2147483647, us_int, long_var,
-	// 		long_var));
-	// printf("%d\n", ft_printf(str, ptr, 4, str, 2147483647, us_int, long_var,
-	// 	long_var));
-}
+	// printf_return = printf("issprintf : dsds %p %i %s %d %u %x %X %%\n", ptr, 4, "test",
+	// 	2147483647, us_int, us_int, us_int);
+	// ft_printf_return = ft_printf("ft_printf : dsds %p %i %s %d %u %x %X %%\n", ptr, 4, "test",
+	// 	2147483647, us_int, us_int, us_int);
+	printf_return = printf("%p", 16);
+	ft_printf_return = ft_printf("%p", 16);
+	printf("\n");
+	printf("printf return : %d\n", printf_return);
+	printf("ft_printf return : %d\n", ft_printf_return);
+}*/

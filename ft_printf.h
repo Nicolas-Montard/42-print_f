@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.h                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/19 13:09:14 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/19 13:12:11 by nmontard         ###   ########.fr       */
+/*   Created: 2025/11/21 12:49:26 by nmontard          #+#    #+#             */
+/*   Updated: 2025/11/21 13:45:56 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PUTNBR_H
-# define FT_PUTNBR_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	ft_putnbr(int n);
-
+void	ft_putunbr(unsigned int nb, int *char_print);
+void	ft_putstr(char *str, int *char_print);
+void	ft_putnbr(int n, int *char_print);
+void	ft_putchar(int n, int *char_print);
+void	ft_put_hex_nbr(unsigned int n, int is_lc, int *char_print);
+void	ft_put_memory(const void *addr, int *char_print);
+int		ft_printf(const char *str, ...);
 #endif

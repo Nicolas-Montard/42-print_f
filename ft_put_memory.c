@@ -6,14 +6,13 @@
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:35:56 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/20 15:51:13 by nmontard         ###   ########.fr       */
+/*   Updated: 2025/11/21 16:13:11 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_putchar.h"
-#include "ft_putstr.h"
+#include "ft_printf.h"
 
-static void	ft_setbase(char base[])
+void static	ft_setbase(char base[])
 {
 	int		i;
 	char	letter;
@@ -33,29 +32,27 @@ static void	ft_setbase(char base[])
 	}
 }
 
-static void	ft_put_longtohex_nbr(unsigned long nb, char base[])
+static void	ft_calculate(unsigned long nb, char base[], int *char_print)
 {
-	if (nb > 16)
+	if (nb >= 16)
 	{
-		ft_put_longtohex_nbr(nb / 16, base);
-		ft_put_longtohex_nbr(nb % 16, base);
+		ft_calculate(nb / 16, base, char_print);
+		ft_calculate(nb % 16, base, char_print);
 	}
 	else
-		ft_putchar(base[nb]);
+		ft_putchar(base[nb], char_print);
 }
 
-void	ft_put_memory(const void *addr)
+void	ft_put_memory(const void *addr, int *char_print)
 {
 	char base[16];
-	unsigned long nb;
 
+	ft_setbase(base);
 	if (!addr)
 	{
-		ft_putstr("(nil)");
+		ft_putstr("(nil)", char_print);
 		return ;
 	}
-	ft_putstr("0x");
-	ft_setbase(base);
-	nb = (unsigned long)addr;
-	ft_put_longtohex_nbr(nb, base);
+	ft_putstr("0x", char_print);
+	ft_calculate((unsigned long)addr, base, char_print);
 }

@@ -6,11 +6,11 @@
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 13:24:58 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/20 16:58:56 by nmontard         ###   ########.fr       */
+/*   Updated: 2025/11/21 15:04:37 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_putchar.h"
+#include "ft_printf.h"
 
 void static	ft_setbase(char base[], int is_lc)
 {
@@ -35,24 +35,21 @@ void static	ft_setbase(char base[], int is_lc)
 	}
 }
 
-void	ft_put_hex_nbr(unsigned int n, int is_lc)
+static void	ft_calculate(unsigned int nb, char base[], int *char_print)
 {
-	char			base[16];
-	unsigned int	nb;
+	if (nb >= 16)
+	{
+		ft_calculate(nb / 16, base, char_print);
+		ft_calculate(nb % 16, base, char_print);
+	}
+	else
+		ft_putchar(base[nb], char_print);
+}
+
+void	ft_put_hex_nbr(unsigned int n, int is_lc, int *char_print)
+{
+	char	base[16];
 
 	ft_setbase(base, is_lc);
-	if (n < 0)
-	{
-		nb = n * -1;
-		ft_putchar('-');
-	}
-	else
-		nb = n;
-	if (nb > 16)
-	{
-		ft_put_hex_nbr(nb / 16, is_lc);
-		ft_put_hex_nbr(nb % 16, is_lc);
-	}
-	else
-		ft_putchar(base[nb]);
+	ft_calculate(n, base, char_print);
 }

@@ -6,13 +6,14 @@
 /*   By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 12:53:42 by nmontard          #+#    #+#             */
-/*   Updated: 2025/11/19 14:29:35 by nmontard         ###   ########.fr       */
+/*   Updated: 2025/11/21 13:46:20 by nmontard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_putchar(char c, int *char_print)
 {
 	write(1, &c, 1);
+	*char_print += 1;
 }

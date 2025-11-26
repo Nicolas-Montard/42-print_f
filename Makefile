@@ -6,24 +6,25 @@
 #    By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/05 15:10:14 by nmontard          #+#    #+#              #
-#    Updated: 2025/11/26 10:12:24 by nmontard         ###   ########.fr        #
+#    Updated: 2025/11/26 11:51:34 by nmontard         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 CC= cc
-CFLAGS= -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra -Werror -MMD -MP
 CFILES = ft_printf.c ft_put_hex_nbr.c ft_put_memory.c ft_putchar.c ft_putnbr.c \
 ft_putstr.c ft_putunbr.c
 OBJECTS = $(CFILES:.c=.o)
+DEPS  := $(OBJECTS:.o=.d)
 NAME = libftprintf.a
 
 all: $(NAME)
 
-$(NAME) : $(OBJECTS) ft_printf.h
+$(NAME) : $(OBJECTS) 
 	ar rcs $@ $^
 
-%.o: %.c | Makefile
-	$(CC) $(CFLAGS) -c $^ -o $@
+%.o: %.c 
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJECTS)
@@ -34,3 +35,5 @@ fclean: clean
 re: fclean $(NAME)
 
 .PHONY: all clean fclean re
+
+-include $(DEPS)

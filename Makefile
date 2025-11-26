@@ -6,7 +6,7 @@
 #    By: nmontard <nmontard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/05 15:10:14 by nmontard          #+#    #+#              #
-#    Updated: 2025/11/21 13:02:20 by nmontard         ###   ########.fr        #
+#    Updated: 2025/11/26 10:12:24 by nmontard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,10 @@ NAME = libftprintf.a
 
 all: $(NAME)
 
-$(NAME) : $(OBJECTS) ft_printf.h Makefile
+$(NAME) : $(OBJECTS) ft_printf.h
 	ar rcs $@ $^
 
-%.o: %.c
+%.o: %.c | Makefile
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
